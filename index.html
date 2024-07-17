@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Segura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            display: none;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .header {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .joke {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        .expression {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #FF5733;
+        }
+        .password-prompt {
+            text-align: center;
+        }
+        .password-prompt input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 80%;
+            max-width: 300px;
+        }
+        .password-prompt input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .password-prompt input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        .response {
+            margin-top: 20px;
+        }
+        .response textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        .response input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .response input[type="button"]:hover {
+            background-color: #218838;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+                box-shadow: none;
+            }
+            .header {
+                font-size: 24px;
+            }
+            .message {
+                font-size: 16px;
+            }
+            .password-prompt input[type="password"] {
+                width: 100%;
+            }
+            .password-prompt input[type="button"], .response input[type="button"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="password-prompt">
+        <h2>Insira a senha para acessar a mensagem</h2>
+        <input type="password" id="password" placeholder="Senha">
+        <input type="button" value="Acessar" onclick="checkPassword()">
+    </div>
+
+    <div class="container" id="message-container">
+        <div class="header">Oi [minha amiga dev, tudo bem?]</div>
+        <div class="message">
+            <p class="joke">Você sabia que o tempo passa mais rápido quando estou perto de você? Deve ser porque você é tão incrível que faz cada segundo valer a pena!</p>
+            <p class="expression">Preciso ser honesto com você. Desenvolvi sentimentos por você, e isso tem sido difícil, especialmente porque sei que você está em um relacionamento. Não espero nada de você, só queria compartilhar isso para ser honesto comigo mesmo. Respeito muito você e sua situação e espero que possamos continuar a ser amigos.</p>
+            <p>Talvez você não perceba tanto, mas gosto de me importar com você e saber se você está bem mesmo. Gosto de você, de te ver sorrindo com aquela energia que só você tem. Gosto dos assuntos que compartilhamos e do quanto me sinto bem tendo você na minha vida. Fico muito feliz quando olho para o celular e vejo que tem mensagens suas.</p>
+        </div>
+        <div class="response">
+            <textarea id="response" placeholder="Escreva sua resposta aqui..."></textarea>
+            <input type="button" value="Enviar" onclick="sendResponse()">
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            var correctPassword = 'Garoto de programa'; // Senha atualizada
+
+            if (password === correctPassword) {
+                document.querySelector('.password-prompt').style.display = 'none';
+                document.getElementById('message-container').style.display = 'block';
+            } else {
+                alert('Senha incorreta, tente novamente.');
+            }
+        }
+
+        function sendResponse() {
+            var response = document.getElementById('response').value;
+            if (response.trim() === '') {
+                alert('Por favor, escreva uma resposta.');
+            } else {
+                alert('Sua resposta foi enviada: ' + response);
+                // Aqui você pode adicionar código para enviar a resposta para um servidor, se necessário
+                console.log('Resposta enviada: ' + response);
+            }
+        }
+    </script>
+</body>
+</html>
+
